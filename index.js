@@ -68,6 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Button zum Speichern hinzufügen und ihn mit einem Eventlistener verknüpfen
     const saveButton = document.createElement("button");
     saveButton.textContent = "Save Notes";
-    saveButton.addEventListener("click", saveNotes);
+    saveButton.addEventListener("click",);
     document.body.appendChild(saveButton);
 });

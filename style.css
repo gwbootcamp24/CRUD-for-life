@@ -18,12 +18,12 @@ body {
 
     background-image: url("Img/notebook_flat_style.png");
     background-size: contain;
-    width: 1400px;
-    height: 1900px; 
-    margin: 4rem;
-    padding: 5rem;
+    width: 1550px;
+    height: 2050px; 
+    margin: 6vw;
+    padding: 4vw;
     max-width: 90%;
-    min-width: 300px;
+    min-width: 30vw;
     box-shadow: 15px 5px 20px -5px #333333;
     display: flex;
     flex-direction: column;
@@ -35,8 +35,8 @@ h1 {
 
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
-    margin-bottom: -4rem;
+    margin-top: 0.5vw;
+    margin-bottom: -8vw;
     font-family: Caveat;
     font-size: 6vw;
     color: #444444;
@@ -46,7 +46,7 @@ h1 {
 #notes {
     margin: 2rem;
     margin-top: 7.7rem;
-    padding-left: 25rem;
+    padding-left: 20vw;
     
     font-family: Caveat;
     font-size: 60px;
@@ -55,12 +55,12 @@ h1 {
 
 
 li {
-   padding-right: 1rem;
+   margin-right: 4vw;
    
-    margin-top: 1.6rem;
-    margin-left: -14rem;
+    margin-top: 1.6vw;
+    margin-left: -14vw;
 
-    max-width: 1200px;
+    max-width: 1700px;
     display: flex;  
     justify-content: space-between;
     border-style: none;
@@ -76,19 +76,18 @@ li::after {
     content: "";
     position: absolute;
     top: 5.5vw;
-    left: 4.5rem;
-    right: 8rem;
+    left: 5vw;
+    right: 7vw;
     bottom: 0;
     border-bottom: 0.45vw solid rgba(1, 1, 1, .1);
     border-radius: 4px;
-    max-width: 20ve;
+    max-width: 24;
 
 }
 
 #new-note {
 
-
-    padding-left: 20rem;
+    padding-left: 20vw;
     font-family: Caveat;
     font-size: 4vw;
     border-style: none;
@@ -96,6 +95,8 @@ li::after {
     border-style: none;
     background-color: transparent;
     outline: none;
+
+
 
 }
 
@@ -110,33 +111,36 @@ li::after {
 
 .delete-button {
   margin-top: 1rem;
-  padding: 2rem;
+  margin-left: 10vw;
+  margin-right: -1vw;
+
     background-image: url(Icons/bin.png);
     background-size: cover;
     background-color: transparent;
     border: none;
-    width: 2;
-    height: 3vw;
+    width: 5vw;
+    height: 5vw;
     cursor: pointer;
     
 }
 
 .edit-button {
+    
     margin-top: 1rem;
-    margin-right: -19rem;
-    padding: 2rem;
+    margin-right: -29vw;
+    padding: 0.2vw;
     
       background-image: url(Icons/edit.png);
       background-size: cover;
       background-color: transparent;
       border: none;
-      width: 2;
-      height: 3vw;
+      width: 5vw;
+      height: 5vw;
       cursor: pointer;
   }
 
   editInput {
-    padding-left: 20rem;
+    padding-left: 20vw;
     font-family: Caveat;
     font-size: 4vw;
     border-style: none;
@@ -146,13 +150,89 @@ li::after {
     outline: none;
 
   }
- 
-#checkbox {
-    border-width: 8px;
-    color: #444444;
-    outline: 8px solid #444444;
-} 
 
-span {max-width: 45vw;
-    min-width: 44vw;
-        margin: 1vw;}
+span {max-width: 1vw;
+    min-width: 43vw;
+        margin: 1vw;
+}
+
+         
+          :root {
+            --form-control-color:#444444;
+            --form-control-disabled: #959495;
+          }
+          
+          *,
+          *:before,
+          *:after {
+            box-sizing: border-box;
+          }
+          
+ 
+          form {
+            display: grid;
+            place-content: center;
+            min-height: 100vh;
+          }
+          
+          .form-control {
+            font-family: system-ui, sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 1.1;
+            display: grid;
+            grid-template-columns: 1em auto;
+            gap: 0.5em;
+          }
+          
+          .form-control + .form-control {
+            margin-top: 1em;
+          }
+          
+          .form-control--disabled {
+            color: var(--form-control-disabled);
+            cursor: not-allowed;
+          }
+          
+          input[type="checkbox"] {
+            
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: var(--form-background);
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 0.75em;
+            height: 0.75em;
+            border: 0.05em solid currentColor;
+            border-radius: 0.1em;
+            transform: translateY(0.45em);
+          
+            display: grid;
+            place-content: center;
+          }
+          
+          input[type="checkbox"]::before {
+            content: "";
+            width: 0.5em;
+            height: 0.5em;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+            transform: scale(0);
+            transform-origin: bottom left;
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em var(--form-control-color);
+            
+
+          }
+          
+          input[type="checkbox"]:checked::before {
+            transform: scale(1);
+          }
+          
+
+          input[type="checkbox"]:disabled {
+            --form-control-color: var(--form-control-disabled);
+          
+            color: var(--form-control-disabled);
+            cursor: not-allowed;
+          }
