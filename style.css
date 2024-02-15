@@ -1,0 +1,128 @@
+
+
+.caveat-<uniquifier> {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+
+body {
+    font: Caveat;
+    background-color: grey;
+    font-family: Caveeat;
+}
+
+#box {
+
+    background-image: url("Img/notebook_flat_style.png");
+    background-size: contain;
+    width: 1400px;
+    height: 1900px; 
+    margin: 4rem;
+    padding: 5rem;
+    max-width: 90%;
+    min-width: 300px;
+    box-shadow: 15px 5px 20px -5px #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    
+}
+
+h1 {
+
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: -4rem;
+    font-family: Caveat;
+    font-size: 6vw;
+    color: #444444;
+}
+
+
+#notes {
+    margin: 2rem;
+    margin-top: 7.7rem;
+    padding-left: 25rem;
+    
+    font-family: Caveat;
+    font-size: 60px;
+    list-style: none;
+}
+
+
+li {
+   padding-right: 1rem;
+   
+    margin-top: 1.6rem;
+    margin-left: -14rem;
+
+    max-width: 1200px;
+    display: flex;  
+    justify-content: space-between;
+    border-style: none;
+    background-color: transparent;
+    font-family: Caveat;
+    font-size: 4vw;
+    color: #444444;
+    position: relative;
+
+}
+
+li::after {
+    content: "";
+    position: absolute;
+    top: 5.5vw;
+    left: 4.5rem;
+    right: 8rem;
+    bottom: 0;
+    border-bottom: 0.45vw solid rgba(1, 1, 1, .1);
+    border-radius: 4px;
+
+}
+
+#new-note {
+
+
+    padding-left: 20rem;
+    font-family: Caveat;
+    font-size: 4vw;
+    border-style: none;
+    color: #444444;
+    border-style: none;
+    background-color: transparent;
+    outline: none;
+
+}
+
+#add-button {
+    font-family: Caveat;
+    font-size: 3vw;
+    color: #444444;
+    border-style: none;
+    background-color: transparent;
+
+}
+
+.delete-button {
+  margin-top: 1rem;
+  padding: 2rem;
+    background-image: url(Icons/bin.png);
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    width: 2;
+    height: 3vw;
+    cursor: pointer;
+    
+}
+
+ 
+#checkbox {
+    border-width: 8px;
+    color: #444444;
+    outline: 8px solid #444444;
+} 
