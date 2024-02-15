@@ -81,6 +81,7 @@ li::after {
     bottom: 0;
     border-bottom: 0.45vw solid rgba(1, 1, 1, .1);
     border-radius: 4px;
+    max-width: 20ve;
 
 }
 
@@ -120,9 +121,38 @@ li::after {
     
 }
 
+.edit-button {
+    margin-top: 1rem;
+    margin-right: -19rem;
+    padding: 2rem;
+    
+      background-image: url(Icons/edit.png);
+      background-size: cover;
+      background-color: transparent;
+      border: none;
+      width: 2;
+      height: 3vw;
+      cursor: pointer;
+  }
+
+  editInput {
+    padding-left: 20rem;
+    font-family: Caveat;
+    font-size: 4vw;
+    border-style: none;
+    color: #444444;
+    border-style: none;
+    background-color: transparent;
+    outline: none;
+
+  }
  
 #checkbox {
     border-width: 8px;
     color: #444444;
     outline: 8px solid #444444;
 } 
+
+span {max-width: 45vw;
+    min-width: 44vw;
+        margin: 1vw;}

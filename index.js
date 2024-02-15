@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         newNote.innerHTML = `
             <input type="checkbox">
             <span>${noteText}</span>
+            <button class="edit-button"></button>
             <button class="delete-button"></button>
         `;
         notesList.appendChild(newNote);
@@ -28,10 +29,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Event Delegation für das Löschen von Notizen
+    // Event Delegation für das Bearbeiten und Löschen von Notizen
     notesList.addEventListener("click", function(event) {
-        if (event.target.classList.contains("delete-button")) {
-            event.target.parentElement.remove();
+        const target = event.target;
+        if (target.classList.contains("edit-button")) {
+            const noteText = target.previousElementSibling;
+            const newText = prompt("Edit note:", noteText.textContent);
+            if (newText !== null) {
+                noteText.textContent = newText;
+            }
+        } else if (target.classList.contains("delete-button")) {
+            target.parentElement.remove();
         }
     });
 
@@ -46,5 +54,20 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
-});
 
+    // Funktion zum Speichern der Notizen
+    function saveNotes() {
+        const notes = [];
+        notesList.querySelectorAll("li span").forEach(note => {
+            notes.push(note.textContent);
+        });
+        // Notizen speichern, z.B. in localStorage
+        localStorage.setItem("notes", JSON.stringify(notes));
+    }
+
+    // Button zum Speichern hinzufügen und ihn mit einem Eventlistener verknüpfen
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save Notes";
+    saveButton.addEventListener("click", saveNotes);
+    document.body.appendChild(saveButton);
+});
