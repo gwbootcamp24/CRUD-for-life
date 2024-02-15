@@ -1,0 +1,39 @@
+:root{
+    --page-width: 950px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1.43em;
+    color: #403e4b;
+
+}
+h1, h2 {
+    font-family: Playfair, serif;
+    line-height: 1.43em;
+}
+
+h1 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
+h2 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+p{
+    margin-bottom: 20px;
+}
