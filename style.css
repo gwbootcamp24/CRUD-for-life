@@ -18,13 +18,14 @@ body {
 
     background-image: url("Img/notebook_flat_style.png");
     background-size: contain;
-    width: 1550px;
-    height: 2050px; 
+    width: 74.2vw;
+    height: 98.2vw; 
     margin: 6vw;
-    padding: 4vw;
+
+    padding: 6vw;
     max-width: 90%;
     min-width: 30vw;
-    box-shadow: 15px 5px 20px -5px #333333;
+    box-shadow: 35px 35px 20px -15px #555555;
     display: flex;
     flex-direction: column;
     align-items: space-between;
@@ -44,8 +45,8 @@ h1 {
 
 
 #notes {
-    margin: 2rem;
-    margin-top: 7.7rem;
+    margin: 2vw;
+    margin-top: 7.7vw;
     padding-left: 20vw;
     
     font-family: Caveat;
@@ -111,8 +112,8 @@ li::after {
 
 .delete-button {
   margin-top: 1rem;
-  margin-left: 10vw;
-  margin-right: -1vw;
+  margin-left: 13vw;
+  margin-right: -4vw;
 
     background-image: url(Icons/bin.png);
     background-size: cover;
@@ -127,7 +128,7 @@ li::after {
 .edit-button {
     
     margin-top: 1rem;
-    margin-right: -29vw;
+    margin-right: -27vw;
     padding: 0.2vw;
     
       background-image: url(Icons/edit.png);
@@ -152,8 +153,8 @@ li::after {
   }
 
 span {max-width: 1vw;
-    min-width: 43vw;
-        margin: 1vw;
+    min-width: 41vw;
+        margin: 0.5vw;
 }
 
          
