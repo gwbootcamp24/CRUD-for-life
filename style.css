@@ -37,3 +37,11 @@ h2 {
 p{
     margin-bottom: 20px;
 }
+.item > *{
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+

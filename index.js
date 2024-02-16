@@ -32,7 +32,7 @@ notiz
             return this
         }
         setDeadline(date){
-            this.readDate = date
+            this.deadline = date
             return this
         }
     
@@ -49,6 +49,7 @@ notiz
         constructor(){
             this.title = 'Meine Todo-Liste'        
             this.notes = []         
+    
             this.htmlFormTemplate = `<div class="item" data-item_id="{--DEADLINE--}">
             <input type="text" name="noteText" class="noteText" value="{--TEXT--}" >
             <input type="date" class="deadline" name="deadline" value="{--DEADLINEINPUT--}" >
@@ -57,24 +58,19 @@ notiz
             `;
             this.htmlTemplate = `
             <div class="item" data-item_id="{--DEADLINE--}">
-                        <div class="content">{--TEXT--}</div><div class="deadline">{--DEADLINE--}</div><button class="edit">Edit</button><button class="delete">delete</button><button class="done">done</button>
+                        <div class="content">{--TEXT--}</div><div class="deadline">{--DEADLINE--}</div><button class="edit">Edit</button><button class="delete">delete</button><button class="done">{--DONESTATUS--}</button>
                     </div>
             `
         }   
-        add(note){
-            const { text, deadline } = note;
+        add(noteData){
+            const { text, deadline } = noteData;
             const newNote = new Note(text, deadline);
             this.notes.push(newNote);
             this.updateNodes();
+            return newNote;
         }
         updateNodes() {
             this.sortNotes();
-        }
-        remove(domNote) {
-            const itemId = domNote.dataset.item_id;
-            this.notes = this.notes.find((e) => e.deadline !== itemId);
-            domNote.remove();
-
         }
         update(text, done, deadline) {
             this.text = text;
@@ -83,11 +79,11 @@ notiz
         }
         printList() {
 
-            let output = `<div><div class="listTitle">${this.title}</div>`;
+            let output = `<div><br> <button class="addBtn" id="addBtn" style="font-size: 36px;">+</button></div><div class="listTitle">${this.title}</div>`;
             output = output + this.notes.reduce((acc, key) => {
-                acc = acc + this.htmlTemplate.replace('{--TEXT--}', key.text).replaceAll('{--DEADLINE--}', key.deadline);
+                acc = acc + this.htmlTemplate.replace('{--TEXT--}', key.text).replaceAll('{--DEADLINE--}', key.deadline).replaceAll('{--DONESTATUS--}', key.done === true ? 'already Done': 'not yet done');
                 return acc;
-            })
+            }, '')
             output * output + '</div>';
             const positionSelect = document.querySelector(".noteList");
             positionSelect.insertAdjacentHTML(
@@ -103,8 +99,21 @@ notiz
         }
 
         newEditNote(deadline) {
-        }
-        insertNote(DOMPosition) {
+
+            const noteEdited = this.notes.find((e) => e.deadline === deadline);
+
+            const newDeadline = new Date().toISOString();
+
+            let output = this.htmlFormTemplate.replace('{--TEXT--}', '').replaceAll('{--DEADLINE--}', newDeadline).replaceAll('{--DEADLINEINPUT--}', newDeadline.substring(0, 10));
+            
+            const positionSelect = document.querySelector('.listTitle');
+            positionSelect.insertAdjacentHTML(
+              'afterend',
+              output,
+            );
+
+
+
         }
         editNote(deadline) {
 
@@ -126,32 +135,50 @@ notiz
               output,
             );
 
+            positionSelect.remove();
                 
 
+
         }
-        checkDone(deadline){
-            const noteToCheck = this.notes.find((e) => e.deadline === deadline);
+        remove(domNote) {
+            const itemId = domNote.dataset.item_id;
+            this.notes = this.notes.filter((e) => e.deadline !== itemId);
+            domNote.remove();
+
+        }
+        checkDone(domNote){
+            const itemId = domNote.dataset.item_id;
+            const noteToCheck = this.notes.find((e) => e.deadline === itemId);
             noteToCheck.done = true;
+            const buttonCheck = domNote.querySelector('.done')
+            buttonCheck.innerHTML = 'Done';
             return this
         }
         
         saveNote(domNote) {
             const itemId = domNote.dataset.item_id;
-            const noteToBeSaved = this.notes.find((e) => e.deadline === itemId);
+            let noteToBeSaved = this.notes.find((e) => e.deadline === itemId);
             const date = domNote.querySelector('input[name="deadline"]');
             const text = domNote.querySelector('.noteText');
             const addedTime = new Date().toISOString().substring(10);
             const newDeadline = date.value + addedTime
-            noteToBeSaved.setDeadline(newDeadline)
-            noteToBeSaved.setText(text);
+            if (!noteToBeSaved) {
+                noteToBeSaved = new Note();
+                this.notes.push(noteToBeSaved);
 
-            let output = this.htmlTemplate.replace('{--TEXT--}', text.value).replaceAll('{--DEADLINE--}', newDeadline);
-            console.log(output);
+            }
+            noteToBeSaved.setDeadline(newDeadline)
+            noteToBeSaved.setText(text.value);
+
+            console.log(this)
+
+            let output = this.htmlTemplate.replace('{--TEXT--}', text.value).replaceAll('{--DEADLINE--}', newDeadline).replaceAll('{--DONESTATUS--}', noteToBeSaved.done === true ? 'already Done': 'not yet done');
             
             domNote.insertAdjacentHTML(
                 "beforebegin",
                 output,
             );
+
             domNote.remove();
 
 
@@ -169,10 +196,13 @@ notiz
             function handleKeyboardKlick(e){
                 // if (exitCond) return;
                 const btn = e.target.closest("button");
-                const domNote = e.target.closest('.item')
                 if (!btn) return;
                 const buttonClass = btn.classList[0];
-                const itemId = domNote.dataset.item_id;
+                const domNote = e.target.closest('.item')
+                let itemId
+                if (domNote !== null) {
+                    itemId = domNote.dataset.item_id;
+                }
                 switch (buttonClass) {
                     case 'edit': that.editNote(itemId); break;
                     case 'delete': 
@@ -181,7 +211,15 @@ notiz
                       } else {
                       }
                     break;
+                    case 'done':
+                        if (confirm("Wirklich schon erledigt? :-)") === true) {
+                            that.checkDone(domNote); 
+                            btn.classList = 'reallyDone';
+                          } else {
+                          }
+    
                     case 'save': that.saveNote(domNote); break;
+                    case 'addBtn': that.newEditNote(); break;
                 }
             }
 
@@ -189,7 +227,7 @@ notiz
             // const editBtns = document.querySelectorAll('button.edit');
             // const deleteBtns = document.querySelectorAll('button.delete');
 
-            document.querySelector('.noteList').addEventListener('click', handleKeyboardKlick);
+            document.querySelector('.listeWrapper').addEventListener('click', handleKeyboardKlick);
 
 
 
