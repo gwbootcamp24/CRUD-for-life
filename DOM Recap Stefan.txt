@@ -1,0 +1,14 @@
+https://codesandbox.io/p/sandbox/dom-manipulation-start-23gtt7?file=%2Fsrc%2Fapp.js
+
+
+Frage git:
+was passiert mit den Files wenn man den branch wechselt?
+Fall 1 Georg-branch will icon von thomas branch, hab den branch gewechselt und dann die Files rauskopiert ausserhalb git
+Fall 2 Thomas-branch sieht ungetrackte Files von Georg branch, aber bei den Icons hab ich eben nix vom anderen Branch gesehen?
+
+
+
+.item:has(.reallyDone) .content {
+  text-decoration: line-through;
+}
+

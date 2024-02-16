@@ -61,6 +61,7 @@ notiz
                         <div class="content">{--TEXT--}</div><div class="deadline">{--DEADLINE--}</div><button class="edit">Edit</button><button class="delete">delete</button><button class="done">{--DONESTATUS--}</button>
                     </div>
             `
+            // {--DONESTATUS--}
         }   
         add(noteData){
             const { text, deadline } = noteData;
@@ -79,7 +80,7 @@ notiz
         }
         printList() {
 
-            let output = `<div><br> <button class="addBtn" id="addBtn" style="font-size: 36px;">+</button></div><div class="listTitle">${this.title}</div>`;
+            let output = `<div><br><h1>${this.title}</h1> <button class="addBtn" id="addBtn" style="font-size: 36px;">+</button></div><div class="listTitle"></div>`;
             output = output + this.notes.reduce((acc, key) => {
                 acc = acc + this.htmlTemplate.replace('{--TEXT--}', key.text).replaceAll('{--DEADLINE--}', key.deadline).replaceAll('{--DONESTATUS--}', key.done === true ? 'already Done': 'not yet done');
                 return acc;

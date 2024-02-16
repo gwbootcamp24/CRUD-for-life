@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 :root{
     --page-width: 950px;
 }
@@ -7,10 +8,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 body {
-    font-family: Roboto, sans-serif;
+    font-family: Caveat, sans-serif;
     font-size: 25px;
     font-weight: 300;
     line-height: 1.43em;
@@ -18,7 +20,7 @@ body {
 
 }
 h1, h2 {
-    font-family: Playfair, serif;
+    font-family: Caveat, sans-serif;
     line-height: 1.43em;
 }
 
@@ -43,13 +45,98 @@ p{
     margin: 5px;
 }
 
+html, body, main,main > div{
+  height: 100%;
+}
 
 .listeWrapper {
-
+  height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 div.deadline{
   display: none;
 }
+
+.delete, .edit, .done, .reallyDone, .addBtn{
+  cursor: pointer;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: 0;
+  min-width: 25px;
+  min-height: 25px;
+  position: relative;
+}
+
+.item{
+  display: flex;
+}
+
+.item .content{
+  flex:1;
+  max-width: 450px;
+}
+
+.delete{
+  background-image: url(Icons/bin.png);
+  color: #ffffff00;
+}
+.edit{
+  background-image: url(Icons/edit.png);
+  color: #ffffff00;
+}
+.reallyDone{
+  color: #ffffff00;
+  min-width: 80px;
+}
+
+.item:has(.reallyDone) .content {
+  text-decoration: line-through;
+}
+
+.noteList{
+
+  background-image: url(img/rand.gif);
+  filter: sepia(100%);
+  background-size: contain;
+  background-repeat: repeat-y;
+  background-position: -25px;
+  background-color: #cfc79a;
+  padding-left: 100px;
+  padding-top: 20px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  box-shadow: 8px 12px 22px 4px #00000059;
+}
+
+@media screen and (max-width: 600px) {
+  .noteList{
+    padding-left: 60px;
+  }
+}
+
+.reallyDone::before {
+  content: " ";
+  width: 20px;
+  height: 20px;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #090909;
+  display: block;
+  position: absolute;
+}
+
+/* 
+<div class="item" data-item_id="2024-02-22T12:12:12.523Z">
+  <div class="content">builders of earth</div>
+  <div class="deadline">2024-02-22T12:12:12.523Z</div>
+  <button class="edit">Edit</button><button class="delete">delete</button>
+  <button class="done">not yet done</button>
+</div>
+ */
+
