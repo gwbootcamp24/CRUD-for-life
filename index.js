@@ -231,68 +231,6 @@ notiz
 
 
 
-            // editBtns.forEach((btn) => {
-
-            //     const noteId = btn.parentElement.dataset.itemid;
-
-                
-            //     btn.addEventListener('click', (event) => {
-            //         event.preventDefault();
-            //         this.editNote(noteId)
-            //     });
-            // })
-            
-            // deleteBtns.forEach((btn) => {
-
-            //     const noteId = btn.parentElement.dataset.itemid;
-
-
-
-                
-            //     btn.addEventListener('click', (event) => {
-            //         event.preventDefault();
-            //         this.remove(noteId)
-            //     });
-            // })
-            
-
-
-
-                // const buttonFnArr = {
-                //     'delete': [this.remove, [noteId]
-                //     ],
-                //     'edit': [this.editNote,[noteId]],
-                //     'done': [this.checkDone,[noteId]]
-                // }
-
-
-                // const buttonFnArr = {
-                //     'delete': [this.remove, [noteId]
-                //     ],
-                //     'edit': [this.editNote,[noteId]],
-                //     'done': [this.checkDone,[noteId]]
-                // }
-
-
-            
-            // const allBtns = document.querySelectorAll('button:not(.addBtn)');
-
-            // allBtns.forEach((btn) => {
-            //     const noteId = btn.parentElement.dataset.item_id;
-            //     const buttonFnArr = {
-            //         'delete': [this.remove, [noteId]
-            //         ],
-            //         'edit': [this.editNote,[noteId]],
-            //         'done': [this.checkDone,[noteId]]
-            //       }
-    
-
-            //   btn.addEventListener('click', (event) => {
-            //     event.preventDefault();
-            //     const fnToCall = buttonFnArr[btn.classList.item(0)][0];
-            //     callFn(fnToCall, buttonFnArr[btn.classList.item(0)][1]);
-            //   });
-            // })
         
 
         }
@@ -305,31 +243,6 @@ notiz
 
 
     
- 
-    // const allBtns = document.querySelectorAll('button');
-
-    // allBtns.forEach((btn) => {
-    //   btn.addEventListener('click', (event) => {
-    //     event.preventDefault();
-    //     const fnToCall = buttonFnArr[btn.classList.item(0)][0];
-    //     callFn(fnToCall, buttonFnArr[btn.classList.item(0)][1]);
-    //   });
-    // })
-
-
-    // const saveNode = (noteId) => {
-    //     const noteText = document.querySelector('')
-    //     const noteData = {
-    //         noteId: [noteText, order]
-    //     }
-    //     localStorage.setItem(noteId, [noteText, order]);
-
-    // }  
-
-    /* <div class="item">
-    <div class="content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim, accusamus!</div>
-    <div class="buttons">Buttons</div>
-    </div> */
 
     // 2011-10-05T14:48:00.000Z
 

@@ -44,4 +44,12 @@ p{
 }
 
 
+.listeWrapper {
 
+  display: flex;
+  justify-content: center;
+}
+
+div.deadline{
+  display: none;
+}
